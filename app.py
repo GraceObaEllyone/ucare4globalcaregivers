@@ -31,6 +31,9 @@ def blogPage(title_blog=None):
 def grace():
     return "This is grace page"
 
+@app.route('/blogs')
+def blogs():
+    return render_template('blog-list.html')
 
 @app.route('/showSignUp')
 def showSignUp():
@@ -54,7 +57,7 @@ def signUp():
             cursor.callproc('sp_createUser', (_name, _email, _password))
             data = cursor.fetchall()
 
-            if len(data) is 0:
+            if len(data) == 0:
                 conn.commit()
                 return json.dumps({'message': 'User created successfully !'})
             else:

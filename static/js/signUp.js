@@ -8,9 +8,11 @@ $(function() {
             type: 'POST',
             success: function(response) {
                 console.log(response);
+                alert("User created Sucessfully");
             },
             error: function(error) {
                 console.log(error);
+                alert(error);
             }
         });
     });

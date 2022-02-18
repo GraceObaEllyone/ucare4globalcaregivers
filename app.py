@@ -1,128 +1,118 @@
-from flask import Flask, render_template, json, request, session, redirect
-from flaskext.mysql import MySQL
 import os
+import sqlite3
+from flask import Flask, render_template, request, url_for, flash, redirect
+from werkzeug.exceptions import abort
+from werkzeug.utils import secure_filename
 
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLD = 'static/uploads/'
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static', 'uploads')
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-mysql = MySQL()
 app = Flask(__name__)
-app.secret_key = os.urandom(12).hex()
+app.config['SECRET_KEY'] = os.urandom(32)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'grace'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'grace'
-app.config['MYSQL_DATABASE_DB'] = 'GraceBlogApp'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
+print(UPLOAD_FOLDER)
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def get_db_connection():
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+def get_post(post_id):
+    conn = get_db_connection()
+    post = conn.execute('SELECT*FROM posts WHERE id =?',
+                        (post_id,)).fetchone()
+    conn.close()
+    if post is None:
+        abort(404)
+    return post
 
 
 @app.route('/')
-def homePage(title="Iam-Global CareGiver"):  # put application's code here
-    return render_template("index.html", title=title)
+def index():
+    conn = get_db_connection()
+    posts = conn.execute('SELECT * FROM posts').fetchall()
+    conn.close
+    return render_template('index2.html', posts=posts)
 
 
-@app.route('/about')
-def aboutPage(title="About Page"):
-    return render_template("about.html", title=title)
+@app.route('/<int:post_id>')
+def post(post_id):
+    post = get_post(post_id)
+    return render_template('post.html', post=post)
 
 
-@app.route('/blog/<title_blog>')
-def blogPage(title_blog=None):
-    return render_template("blog-post.html", title_blog=title_blog)
+@app.route('/create', methods=('GET', 'POST'))
+def create():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        caption = request.form['caption']
+        author = request.form['author']
 
+        if not title:
+            flash('Title is required!')
+        elif 'file' not in request.files:
+            flash(request.files)
+        elif not caption:
+            flash('Summary is missing')
+        elif not author:
+            flash('Author is missing')
+        else:
+            file = request.files['file']
 
-@app.route('/blogs')
-def blogs():
-    return render_template('blog-list.html')
-
-
-@app.route('/showSignUp')
-def showSignUp():
-    return render_template('signup.html')
-
-
-@app.route('/signUp', methods=['POST', 'GET'])
-def signUp():
-    try:
-        _name = request.form['inputName']
-        _email = request.form['inputEmail']
-        _password = request.form['inputPassword']
-
-        # validate the received values
-        if _name and _email and _password:
-
-            # All Good, let's call MySQL
-
-            conn = mysql.connect()
-            cursor = conn.cursor()
-            cursor.callproc('sp_createUser', (_name, _email, _password))
-            data = cursor.fetchall()
-
-            if len(data) == 0:
+            if file.filename == '':
+                flash('No selected file')
+            elif file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                uploadFileName = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(uploadFileName)
+                conn = get_db_connection()
+                conn.execute('INSERT INTO posts (title, content, caption, author, image_url ) VALUES (?,?,?,?,?)',
+                             (title, content, caption, author, filename))
                 conn.commit()
-                return json.dumps({'message': 'User created successfully !', 'data': 'success'})
+                conn.close()
+                return redirect(url_for('index'))
 
-            else:
-                return json.dumps({'error': str(data[0])})
+    return render_template('create.html')
 
+
+@app.route('/<int:id>/edit', methods=('GET', 'POST'))
+def edit(id):
+    post = get_post(id)
+
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+
+        if not title:
+            flash('Title is required!')
         else:
-            return json.dumps({'html': '<span>Enter the required fields</span>'})
-
-    except Exception as e:
-        return json.dumps({'error': str(e)})
-    finally:
-        cursor.close()
-        conn.close()
-
-
-@app.route('/login')
-def login():
-    return render_template('signin.html')
+            conn = get_db_connection()
+            conn.execute('UPDATE posts SET title = ?, content = ?'
+                         ' WHERE id = ?',
+                         (title, content, id))
+            conn.commit()
+            conn.close()
+            return redirect(url_for('index'))
+    return render_template('edit.html', post=post)
 
 
-@app.route('/validateLogin', methods=['POST'])
-def validateLogin():
-    try:
-        _username = request.form['inputEmail']
-        _password = request.form['inputPassword']
-
-        # connect to mysql
-        con = mysql.connect()
-        cursor = con.cursor()
-        cursor.callproc('sp_validateLogin', (_username,))
-        data = cursor.fetchall()
-
-        print(data)
-        if len(data) > 0:
-            if data[0][3] == _password:
-                session['user'] = data[0][0]
-                return redirect('/userHome')
-            else:
-                return render_template('error.html', error='Wrong Email address or Password.')
-        else:
-            return render_template('error.html', error='Wrong Email address or Password.')
-
-    except Exception as e:
-        return render_template('error.html', error=str(e))
-    finally:
-        cursor.close()
-        con.close()
-
-@app.route('/logout')
-def logout():
-    session.pop('user', None)
-    return redirect('/')
-
-
-@app.route('/userHome')
-def userHome():
-    return render_template('userHome.html')
-
-
-if __name__ == 'main':
-    # Quick test configuration. Please use proper Flask configuration options
-    # in production settings, and use a separate file or environment variables
-    # to manage the secret key!
-
-
-    app.debug = True
-    app.run()
+@app.route('/<int:id>/delete', methods=('POST',))
+def delete(id):
+    post = get_post(id)
+    conn = get_db_connection()
+    conn.execute('DELETE FROM posts WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
+    flash('"{}" was successfully deleted!'.format(post['title']))
+    return redirect(url_for('index'))

@@ -14,12 +14,8 @@
     <!-- FontAwesome JS-->
     <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
 
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
-
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/static/assets/css/theme-1.css">
-
 
 </head>
 
@@ -50,10 +46,10 @@
 				</div><!--//profile-section-->
 
 				<ul class="navbar-nav flex-column text-left">
-					<li class="nav-item">
+					<li class="nav-item active">
 					    <a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>Blog Home <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 					    <a class="nav-link" href="blog-post.html"><i class="fas fa-bookmark fa-fw mr-2"></i>Blog Post</a>
 					</li>
 					<li class="nav-item">
@@ -62,58 +58,48 @@
 				</ul>
 
 				<div class="my-2 my-md-3">
-
 				    <a class="btn btn-primary" href="https://themes.3rdwavemedia.com/" target="_blank">Get in Touch</a>
-
 				</div>
 			</div>
 		</nav>
     </header>
 
     <div class="main-wrapper">
-
-
-                {% block content %}
-
-
-
-	    <article class="blog-post px-3 py-5 p-md-5">
-		    <div class="container">
-			    <header class="blog-post-header">
-				    <h2 class="title mb-2">{%block title%} {{ post['title']}} {% endblock %}</h2>
-				    <div class="meta mb-3"><span class="date">{{ post['created'] }}</span><span class="time">5 min read</span><span class="comment"><a href="#">4 comments</a></span></div>
-			    </header>
-
-
-			    <div class="blog-post-body">
-				    <figure class="blog-banner">
-				        <a href="https://made4dev.com"><img class="img-fluid" src="/static/uploads/{{ post['image_url'] }}" alt="image"></a>
-				        <figcaption class="mt-2 text-center image-caption">Image Credit: <a href="https://made4dev.com?ref=devblog" target="_blank">made4dev.com (Premium Programming T-shirts)</a></figcaption>
-				    </figure>
-                    <div>
-                        {{ post['content'] }}
+	    <section class="cta-section theme-bg-light py-5">
+		    <div class="container text-center">
+			    <h2 class="heading">DevBlog - A Blog Template Made For Developers</h2>
+			    <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
+			    <form class="signup-form form-inline justify-content-center pt-3">
+                    <div class="form-group">
+                        <label class="sr-only" for="semail">Your email</label>
+                        <input type="email" id="semail" name="semail1" class="form-control mr-md-1 semail" placeholder="Enter email">
                     </div>
-			    </div>
-
-			    <nav class="blog-nav nav nav-justified my-5">
-				  <a class="nav-link-prev nav-item nav-link rounded-left" href="index.html">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
-				  <a class="nav-link-next nav-item nav-link rounded-right" href="blog-list.html">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
-				</nav>
-
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
 		    </div><!--//container-->
-	    </article>
+	    </section>
+	    <section class="blog-list px-3 py-5 p-md-5">
+            <div class="container">
 
-    {% endblock %}
 
-	    <section class="promo-section theme-bg-light py-5 text-center">
-		    <div class="container">
-			    <h2 class="title">Promo Section Heading</h2>
-			    <p>You can use this section to promote your side projects etc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
-                <figure class="promo-figure">
-			        <a href="https://made4dev.com" target="_blank"><img class="img-fluid" src="assets/images/promo-banner.jpg" alt="image"></a>
-			    </figure>
-		    </div><!--//container-->
-	    </section><!--//promo-section-->
+
+                {% for post in posts %}
+                    <div class="item mb-5">
+                        <div class="media">
+                            <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/static/uploads/{{ post['image_url']}}" alt="image">
+                            <div class="media-body">
+                                <h3 class="title mb-1"><a href="{{ url_for('post', post_id=post['id'])}}">{{ post['title']}}</a></h3>
+                                <div class="meta mb-1"><span class="date">{{ post['created']}}</span><span class="time">5 min read</span><span class="comment"><a href="#">8 comments</a></span></div>
+                                <div class="intro">{{ post['caption']}}</div>
+                                <a class="more-link" href="{{ url_for('post', post_id=post['id'])}}">Read more &rarr;</a>
+                            </div><!--//media-body-->
+                        </div><!--//media-->
+			        </div><!--//item-->
+                {% endfor %}
+
+
+		    </div>
+	    </section>
 
 	    <footer class="footer text-center py-2 theme-bg-dark">
 
@@ -123,6 +109,8 @@
 	    </footer>
 
     </div><!--//main-wrapper-->
+
+
 
 
     <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
@@ -150,12 +138,6 @@
     <script src="/static/assets/plugins/jquery-3.3.1.min.js"></script>
     <script src="/static/assets/plugins/popper.min.js"></script>
     <script src="/static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Page Specific JS -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
-
-    <!-- Custom JS -->
-    <script src="/static/assets/js/blog.js"></script>
 
     <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
     <script src="/static/assets/js/demo/style-switcher.js"></script>

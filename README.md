@@ -7,8 +7,7 @@ A blogsite for  global Family i.e. Parent and siblings Caregivers
 
 
 
-Write a README.md file in English for the interactive web application that explains its 
-purpose and the value that it provides to its users.
+
 
 
 
@@ -24,11 +23,11 @@ Hi readers, my name is Grace O’Ellyone. I am a Family Caregiver, one of my chi
 To contribute to the emergent ongoing Institiional abuse against Family/Parent caregivers 
  To explore how Institutions percieve and prey on family caregivers as abusers rather than providing support for family caregivers 
           
-This topice will 
+# This topic will 
 1. Educate, 
 2. Inform
-3. To expose more safegauding issues within the Health and social care setting against family caregivers that had been pushed under the carpet in our society  
-4. Take action against the ongoing blame culture among the so called professions cooking lies against family caregivers most especialy volunrable young adult
+3. expose more safegauding issues within the Health and social care setting against family caregivers that had been pushed under the carpet in our society  
+4. Want you to take action against the ongoing blame culture among the so called professions cooking lies against family caregivers most especialy volunrable young adult's families
 
        
 # Introduction: 

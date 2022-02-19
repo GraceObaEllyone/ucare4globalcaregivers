@@ -1,8 +1,9 @@
 import os
 import sqlite3
-from flask import Flask, render_template, request, url_for, flash, redirect
+from flask import Flask, render_template, request, url_for, flash, redirect, session
 from werkzeug.exceptions import abort
 from werkzeug.utils import secure_filename
+from werkzeug.security import check_password_hash, generate_password_hash
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLD = 'static/uploads/'
@@ -42,13 +43,23 @@ def index():
     conn = get_db_connection()
     posts = conn.execute('SELECT * FROM posts').fetchall()
     conn.close
-    return render_template('index2.html', posts=posts)
+    print(session.get('user'))
+    return render_template('index.html', posts=posts, user=session.get('user'))
+
+
+@app.route('/bloglist')
+def blogList():
+    conn = get_db_connection()
+    posts = conn.execute('SELECT * FROM posts').fetchall()
+    conn.close
+    print(session.get('user'))
+    return render_template('index.html', posts=posts, user=session.get('user'))
 
 
 @app.route('/<int:post_id>')
 def post(post_id):
     post = get_post(post_id)
-    return render_template('post.html', post=post)
+    return render_template('blog-post.html', post=post, user=session.get('user'))
 
 
 @app.route('/create', methods=('GET', 'POST'))
@@ -116,3 +127,68 @@ def delete(id):
     conn.close()
     flash('"{}" was successfully deleted!'.format(post['title']))
     return redirect(url_for('index'))
+
+
+@app.route('/signin', methods=('GET', 'POST'))
+def signIn():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['pass']
+
+        conn = get_db_connection()
+        users = conn.execute('SELECT * FROM users WHERE email = ?',
+                             [email]).fetchall()
+        conn.commit()
+        conn.close()
+
+        if len(users) > 0:
+            user = users[0]
+            if check_password_hash(user['user_password'], password):
+                session['user'] = user['user_name']
+                redirect(url_for('index'))
+            else:
+                flash("password is wrong")
+        else:
+            flash('User not exist')
+
+    if session.get('user'):
+        return redirect(url_for('index'))
+    else:
+        return render_template('signin.html')
+
+
+@app.route('/signup', methods=('GET', 'POST'))
+def signUp():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        password = request.form['pass']
+        re_pass = request.form['re_pass']
+
+        print(name, email, password)
+        _hashedPass = generate_password_hash(password)
+        if password != re_pass:
+            flash("Password is no match")
+        else:
+            conn = get_db_connection()
+            conn.execute('INSERT INTO users (user_name, email, user_password) VALUES (?,?,?)',
+                         (name, email, _hashedPass))
+            conn.commit()
+            conn.close()
+            return redirect(url_for('signIn'))
+
+    if session.get('user'):
+        return redirect(url_for('index'))
+    else:
+        return render_template('signup.html')
+
+
+@app.route('/logout')
+def logout():
+    session.pop('user')
+    return redirect(url_for('index'))
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html', user=session.get('user'))

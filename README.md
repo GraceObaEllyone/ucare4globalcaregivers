@@ -96,19 +96,31 @@ In addition, there are stressors for carers waiting for the start or completion 
 https://www.childtrends.org/publications/resources-for-supporting-childrens-emotional-well-being-during-the-covid-19-pandemic
 
 
-
 # Conclusion
-
 
 With all fact and evidence provided Should global family caregivers be valued recognized and respected for all effort for their love one or shamed by the Institutional abusers? 
 Your comment and opinion are welcome.
 Please like share on our tweet https://twitter.com/home @graceoellyone, https://www.facebook.com/profile.php?id=100078356743732 You can even email your views to me at iamaglobalcaregiver2@gmail.com
 
-# References
+# References and Acknowledgments
 1. www.statistas.com
 2.  www.health.org.uk
 3.  https://www.ncbi.nlm.nih.gov/pmc/
 4.  https://bmcpalliatcare.biomedcentral.com
+5.  https://www.childtrends.org/publications
+6.  https://www.frg.org.uk
+7.  https://www.carersuk.org
+8.  https://www.ons.gov.uk/ 
 
+# PLEASE NOTE
 All access to the above website were made today 19th Feb 2022 @ 07.00
+
+Credits 🙏
+
+Code Institute
+Stack Overflow
+Code Institute Slack Community.
+My mentor Guido Cecilio for guidance and support.
+My family and friends for their patience and honest critique throughout.
+My Personal Tutor
  

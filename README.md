@@ -4,15 +4,24 @@
 A blogsite for  global Family i.e. Parent and siblings Caregivers
 
 
+## Content 
+# About the Author
 
+# Purpose 
 
+# Value to readers
 
+# Introduction
 
+# . Understanding of who Family Caregivers are
+   # i. Who are family caregivers
+   # ii. What are the daily challenges as a family caregiver 
+   # iii. What support is available if the Local Authority falsely alleged family caregivers of safeguarding issues?
+   # iv. What is the impact of the COVID on both vulnarable young adult and famile caregivers | https://www.ncbi.nlm.nih.gov/pmc/
+   # v. Emotional impact on children and young vulnarable adult during pandemic 
 
-
-
-
-
+# Conclusion
+# References and Acknowledgments
 
 
 # About the Author
@@ -23,7 +32,7 @@ Hi readers, my name is Grace O’Ellyone. I am a Family Caregiver, one of my chi
 To contribute to the emergent ongoing Institiional abuse against Family/Parent caregivers 
  To explore how Institutions percieve and prey on family caregivers as abusers rather than providing support for family caregivers 
           
-# This topic will 
+# Value to readers | This topic will 
 1. Educate, 
 2. Inform
 3. expose more safegauding issues within the Health and social care setting against family caregivers that had been pushed under the carpet in our society  
@@ -77,7 +86,6 @@ https://www.frg.org.uk/ParentsForum/viewtopic.php?t=2102
 
 # iv. What is the impact of the COVID on both vulnarable young adult and famile caregivers | https://www.ncbi.nlm.nih.gov/pmc/
 
-
 In general, parents and carers of children and young people have reported a negative impact on their mental health and wellbeing, with observable deterioration after the implementation of national lockdowns and home education. However, some subgroups have shown greater vulnerability to the mental health impacts of the COVID-19 pandemic than other subgroups, including adults in single-caregiver households, families on low incomes, and households with children and young people with special educational needs or neurodevelopmental disorders. Many of these subgroups have had to take on roles that might have otherwise been offered by school-based pastoral support and mental health professionals.
 
 As the pandemic unfolded and lockdown measures followed, there has been a public health focus on promoting wellbeing through managing (restricting) food and alcohol consumption and introducing optimal exercise routines. Although laudable and led by evidence that highlights substantial increases in problematic drinking and lifestyle behaviours during lockdown, the confirmed links between obesity and lockdown measures, and the increased risk of death,this focus has been complex for people with emerging or established eating disorders
@@ -116,7 +124,6 @@ Please like share on our tweet https://twitter.com/home @graceoellyone, https://
 All access to the above website were made today 19th Feb 2022 @ 07.00
 
 Credits 🙏
-
 Code Institute
 Stack Overflow
 Code Institute Slack Community.

@@ -105,6 +105,9 @@ In addition, there are stressors for carers waiting for the start or completion 
 https://www.childtrends.org/publications/resources-for-supporting-childrens-emotional-well-being-during-the-covid-19-pandemic
 
 
+
+
+
 # Conclusion
 
 With all fact and evidence provided Should global family caregivers be valued recognized and respected for all effort for their love one or shamed by the Institutional abusers? 
@@ -132,3 +135,23 @@ My mentor Guido Cecilio for guidance and support.
 My family and friends for their patience and honest critique throughout.
 My Personal Tutor
  
+## 6️⃣ Deployment 🚀
+
+This project was developed in Visual Studio Code editor. All developments were pushed to the corresponding repository in GitHub account.
+
+In order to deploy the website to GitHub pages, I:
+
+- Selected the Repository from the GitHub Dashboard.
+
+- Navigated to "Settings" then "GitHub Pages".
+
+- Selected "master branch" in Source section.
+
+- Page auto refreshed and link generated under GitHub Pages section:
+
+Flask : https://flask.palletsprojects.com/en/2.0.x/
+Python : htpps://python.org
+SQLITE3: htpps://sqlite.org
+
+Github Repostory : https://github.com/GraceObaEllyone/ucare4globalcaregivers
+Blog Repostory: https://graceobaellyone.github.io/ucare4globalcaregivers/

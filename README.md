@@ -13,7 +13,7 @@ A blogsite for  global Family i.e. Parent and siblings Caregivers
 
 # Introduction
 
-# . Understanding of who Family Caregivers are
+# Understanding of who Family Caregivers are
    # i. Who are family caregivers
    # ii. What are the daily challenges as a family caregiver 
    # iii. What support is available if the Local Authority falsely alleged family caregivers of safeguarding issues?
@@ -85,7 +85,7 @@ One of the greatest challenges of family care is caregiving for someone sufferin
 When institutional abuse occurs from a socail worker and Support service, it is so challenging and so devastating on both friend and family. Most expecially when no wrong or allegation had not be made on the family caregive over 2weeks that family had been falsely alleged of what doen not exist insomuch the child is removed away from the family and no contact made with vulnerable young adult and the family. An example of happens is attaches as a link
 https://www.frg.org.uk/ParentsForum/viewtopic.php?t=2102
 
-# iv. What is the impact of the COVID on both vulnarable young adult and famile caregivers | https://www.ncbi.nlm.nih.gov/pmc/
+# iv. What is the impact of the COVID on both vulnarable young adult and families caregivers | https://www.ncbi.nlm.nih.gov/pmc/
 
 In general, parents and carers of children and young people have reported a negative impact on their mental health and wellbeing, with observable deterioration after the implementation of national lockdowns and home education. However, some subgroups have shown greater vulnerability to the mental health impacts of the COVID-19 pandemic than other subgroups, including adults in single-caregiver households, families on low incomes, and households with children and young people with special educational needs or neurodevelopmental disorders. Many of these subgroups have had to take on roles that might have otherwise been offered by school-based pastoral support and mental health professionals.
 

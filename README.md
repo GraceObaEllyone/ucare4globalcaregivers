@@ -18,7 +18,7 @@ purpose and the value that it provides to its users.
 
 # About the Author
  
-Hi readers, my name is Grace O’Ellyone. I am a Family Caregiver, one of my children at 2years old was diagnosed with meningitis that left her profundly deaf with additional nee Despite all the challenges I am a gratdua with a BA Joint Hons in Community Sector Management/International Relations. Apart from my care given role, I am an Educational Practitioner with many hats including Project Developer/Management and Innovation. I enjoy catching of with modern day technology. Not only that, but I am also a mother of two men and one lady.
+Hi readers, my name is Grace O’Ellyone. I am a Family Caregiver, one of my children at 2years old was diagnosed with meningitis that left her profundly deaf with additional need Despite all the challenges I graduated with a BA Joint Hons in Community Sector Management/International Relations. Apart from my care given role, I am an Educational Practitioner with many hats including Project Developer/Management and Innovation. I enjoy catching of with modern day technology. Not only that, but I am also a mother of two men and one lady.
 
 # Purpose : 
 To contribute to the emergent ongoing Institiional abuse against Family/Parent caregivers 

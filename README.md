@@ -97,7 +97,9 @@ https://www.childtrends.org/publications/resources-for-supporting-childrens-emot
 
 
 
-Conclusion
-With all fact and evidence provided should care giver be respected and recognised for all effort for their love one or shamed by the Institutional abusers 
+# Conclusion
+
+
+With all fact and evidence provided Should global family caregivers be valued recognized and respected for all effort for their love one or shamed by the Institutional abusers? 
 Your comment and opinion are welcome.
-Please like share on our tweet https://twitter.com/home @graceoellyone, https://www.facebook.com/profile.php?id=100078356743732 You cam email to at iamaglobalcaregiver2@gmail.com
+Please like share on our tweet https://twitter.com/home @graceoellyone, https://www.facebook.com/profile.php?id=100078356743732 You can even email your views to me at iamaglobalcaregiver2@gmail.com

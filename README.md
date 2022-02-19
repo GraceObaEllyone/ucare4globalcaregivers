@@ -1,6 +1,6 @@
 # Milestone Project 2 | Interactive Front-End Development
 
-# Global Family Caregivers | Vulnerable Young Adult
+# Global Family Caregivers
 A blogsite for  global Family i.e. Parent and siblings Caregivers
 
 

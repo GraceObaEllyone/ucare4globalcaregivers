@@ -150,7 +150,8 @@ In order to deploy the website to GitHub pages, I:
 - Page auto refreshed and link generated under GitHub Pages section:
 
 Flask : https://flask.palletsprojects.com/en/2.0.x/
-Python : htpps://python.org | https://www.pythonanywhere.com/user/grace2022/
+Python : htpps://python.org | https://www.pythonanywhere.com
+
 SQLITE3: htpps://sqlite.org
 Github Repostory : https://github.com/GraceObaEllyone/ucare4globalcaregivers
 Blog Repostory: https://grace2022.pythonanywhere.com/
